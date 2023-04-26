@@ -44,7 +44,7 @@ public class EmployeesController {
         return "Employee: " + employeesService.findEmployee(employee) + " found";
     }
 
-    @GetMapping(path = "/print")
+    @GetMapping
     public List<Employees> printEmployee() {
         return employeesService.printEmployee();
     }

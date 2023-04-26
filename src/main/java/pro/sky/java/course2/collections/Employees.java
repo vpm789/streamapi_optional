@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Employees {
     private String firstName;
     private String lastName;
-    private final int quantityEmployees = 10;
 
     public Employees(String firstName, String lastName) {
         this.firstName = firstName;
@@ -19,13 +18,15 @@ public class Employees {
     public String getLastName() {
         return lastName;
     }
-    public int getQuantityEmployees() {
-        return quantityEmployees;
-    }
+
     @Override
     public String toString() {
-        return "Сотрудник: " + firstName + " " + lastName;
+        return "Employees{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
+
 
     @Override
     public boolean equals(Object o) {

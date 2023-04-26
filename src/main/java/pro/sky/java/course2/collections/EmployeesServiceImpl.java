@@ -11,17 +11,13 @@ public class EmployeesServiceImpl implements EmployeesService {
     List<Employees> employees = new ArrayList<>(List.of(
             new Employees("Иван", "Красавин"),
             new Employees("Серега", "Тафгай"),
-            new Employees("Оля", "Пушка"),
             new Employees("Илья", "Муромец"),
-            new Employees("Марина", "Влади"),
             new Employees("Сашка", "Череп")
     ));
 
     @Override
     public void addEmployee(Employees employee) {
-        if (employees.size() >= employee.getQuantityEmployees()) {
-            throw new EmployeeStorageIsFullException();
-        } else if (employees.contains(employee)) {
+        if (employees.contains(employee)) {
             throw new EmployeeAlreadyAddedException();
         } else if (Objects.equals(employee.getFirstName(), "") || Objects.equals(employee.getLastName(), "")) {
             throw new RuntimeException("Enter FirstName and LastName employee's");
