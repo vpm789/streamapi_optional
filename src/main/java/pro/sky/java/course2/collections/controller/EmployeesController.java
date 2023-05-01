@@ -1,11 +1,15 @@
-package pro.sky.java.course2.collections;
+package pro.sky.java.course2.collections.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sky.java.course2.collections.Employees;
+import pro.sky.java.course2.collections.service.EmployeesService;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -18,34 +22,22 @@ public class EmployeesController {
 
     @GetMapping(path = "/add")
     public String addEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        Employees employee = new Employees(
-                firstName,
-                lastName
-        );
-        employeesService.addEmployee(employee);
-        return employee + " added";
+        employeesService.addEmployee(firstName, lastName);
+        return firstName + " " + lastName + " added";
     }
 
     @GetMapping(path = "/remove")
     public String deleteEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        Employees employee = new Employees(
-                firstName,
-                lastName
-        );
-        employeesService.deleteEmployee(employee);
-        return employee + " deleted";
+        employeesService.deleteEmployee(firstName, lastName);
+        return firstName + " " + lastName + " deleted";
     }
     @GetMapping(path = "/find")
     public String findEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        Employees employee = new Employees(
-                firstName,
-                lastName
-        );
-        return "Employee: " + employeesService.findEmployee(employee) + " found";
+        return employeesService.findEmployee(firstName, lastName);
     }
 
     @GetMapping
-    public List<Employees> printEmployee() {
+    public Collection<String> printEmployee() {
         return employeesService.printEmployee();
     }
 }

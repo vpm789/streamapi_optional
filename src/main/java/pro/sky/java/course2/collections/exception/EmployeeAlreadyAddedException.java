@@ -1,4 +1,4 @@
-package pro.sky.java.course2.collections;
+package pro.sky.java.course2.collections.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
