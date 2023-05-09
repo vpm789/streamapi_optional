@@ -15,22 +15,22 @@ public class DepartmentServiceImpl implements DepartmentService{
     @Override
     public Employees getEmployeeMinSalaryDepart(int department) {
         Collection<Employees> employees = employeesService.printEmployee();
-        String employeeName = "";
+        Employees employeeMinSalaryDepartment = null;
         double minSalary = 0;
         for (Employees employee : employees) {
             if (employee != null && employee.getDepartment() == department) {
                 if (minSalary == 0 || employee.getSalary() < minSalary) {
-                    employeeName = employee.getFirstName() + " " + employee.getLastName();
+                    employeeMinSalaryDepartment = employee;
                     minSalary = employee.getSalary();
                 }
             }
         }
-        if (!employeeName.equals("")) {
+        /*if (!employeeName.equals("")) {
             System.out.println("Сотрудник с минимальной зарплатой в отделе " + department + ": " + employeeName);
         } else {
             System.out.println("Отдел " + department + " не найден");
-        }
-        return null;
+        }*/
+        return employeeMinSalaryDepartment;
     }
     @Override
     public Employees getEmployeeMaxSalaryDepart(int department) {
