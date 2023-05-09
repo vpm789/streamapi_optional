@@ -1,9 +1,9 @@
-package pro.sky.java.course2.collections.service;
+package pro.sky.java.course2.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.collections.Employees;
-import pro.sky.java.course2.collections.exception.EmployeeAlreadyAddedException;
-import pro.sky.java.course2.collections.exception.EmployeeNotFoundException;
+import pro.sky.java.course2.Employees;
+import pro.sky.java.course2.exception.EmployeeAlreadyAddedException;
+import pro.sky.java.course2.exception.EmployeeNotFoundException;
 
 import java.util.*;
 

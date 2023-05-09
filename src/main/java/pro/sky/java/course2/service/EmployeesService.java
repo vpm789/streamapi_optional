@@ -1,6 +1,6 @@
-package pro.sky.java.course2.collections.service;
+package pro.sky.java.course2.service;
 
-import pro.sky.java.course2.collections.Employees;
+import pro.sky.java.course2.Employees;
 
 import java.util.Collection;
 
