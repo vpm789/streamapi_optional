@@ -8,6 +8,8 @@ import pro.sky.java.course2.Employees;
 import pro.sky.java.course2.service.DepartmentService;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/department")
@@ -28,8 +30,13 @@ public class DepartmentController {
         return departmentService.getEmployeeMaxSalaryDepart(department);
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/all", params = "department")
     public Collection<Employees> getEmployeesDepart(@RequestParam("department") int department) {
         return departmentService.getEmployeesDepart(department);
+    }
+
+    @GetMapping(path = "/all")
+    public Map<Integer, List<Employees>> getEmployees() {
+        return departmentService.getEmployees();
     }
 }
