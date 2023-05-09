@@ -21,8 +21,11 @@ public class EmployeesController {
     }
 
     @GetMapping(path = "/add")
-    public String addEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        employeesService.addEmployee(firstName, lastName);
+    public String addEmployee(@RequestParam("firstName") String firstName,
+                              @RequestParam("lastName") String lastName,
+                              @RequestParam("lastName") int department,
+                              @RequestParam("lastName") double salary) {
+        employeesService.addEmployee(firstName, lastName, department, salary);
         return firstName + " " + lastName + " added";
     }
 
@@ -32,12 +35,12 @@ public class EmployeesController {
         return firstName + " " + lastName + " deleted";
     }
     @GetMapping(path = "/find")
-    public String findEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+    public Employees findEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
         return employeesService.findEmployee(firstName, lastName);
     }
 
     @GetMapping
-    public Collection<String> printEmployee() {
+    public Collection<Employees> printEmployee() {
         return employeesService.printEmployee();
     }
 }

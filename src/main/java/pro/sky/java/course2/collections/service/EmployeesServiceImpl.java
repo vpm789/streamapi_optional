@@ -9,18 +9,18 @@ import java.util.*;
 
 @Service
 public class EmployeesServiceImpl implements EmployeesService {
-    Map<String, String> employees = new HashMap<>();
+    Map<String, Employees> employees = new HashMap<>();
 
     @Override
-    public void addEmployee(String firstName, String lastName) {
+    public void addEmployee(String firstName, String lastName, int department, double salary) {
         if (firstName == null || lastName == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
-        Employees employee = new Employees(firstName, lastName);
+        Employees employee = new Employees(firstName, lastName, department, salary);
         if (employees.containsKey(firstName + lastName)) {
             throw new EmployeeAlreadyAddedException();
         }
-        employees.put(firstName + lastName, firstName + " " + lastName);
+        employees.put(firstName + lastName, employee);
     }
 
     @Override
@@ -28,7 +28,6 @@ public class EmployeesServiceImpl implements EmployeesService {
         if (firstName == null || lastName == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
-        Employees employee = new Employees(firstName, lastName);
         if (!employees.containsKey(firstName + lastName)) {
             throw new EmployeeNotFoundException("Employee not found");
         }
@@ -36,11 +35,10 @@ public class EmployeesServiceImpl implements EmployeesService {
     }
 
     @Override
-    public String findEmployee(String firstName, String lastName) {
+    public Employees findEmployee(String firstName, String lastName) {
         if (firstName == null || lastName == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
-        Employees employee = new Employees(firstName, lastName);
         if (!employees.containsKey(firstName + lastName)) {
             throw new EmployeeNotFoundException("Employee not found");
         }
@@ -48,7 +46,7 @@ public class EmployeesServiceImpl implements EmployeesService {
     }
 
     @Override
-    public Collection<String> printEmployee() {
+    public Collection<Employees> printEmployee() {
         return employees.values();
     }
 
